@@ -20,6 +20,7 @@
     "morgan": "^1.7.0",
     "node-env-file": "^0.1.8",
     "normalize.css": "^4.2.0",
+    "rome": "^2.1.22",
     "seriate": "^0.7.1",
     "vue": "^1.0.26",
     "vue-resource": "^0.9.3",

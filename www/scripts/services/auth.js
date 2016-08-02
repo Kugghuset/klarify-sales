@@ -139,6 +139,22 @@ function setup() {
 // Call the setup method to initialize all things auth.
 //setup();
 
+/**
+ * Returns a GUID string.
+ *
+ * Example output: '1a729180f8-1f9c3-18d86-13b26-15ff6120931f241'
+ *
+ * @return {String} GUID string
+ */
+export const guid = () => {
+  return _.times(5, (i) => {
+    // Assign n to 2 if i === 0, 3 if i === 4, otherwise 1
+    let n = [2, 1, 1, 1, 3][i];
+
+    return _.times(n, () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring()).join('');
+  }).join('-');
+}
+
 console.log('Attached logout function to window for use when developing');
 window.logout = logout;
 
@@ -151,4 +167,5 @@ export default {
   getCurrentUser: getCurrentUser,
   getHeaders: getHeaders,
   validateEmail: validateEmail,
+  guid: guid,
 }

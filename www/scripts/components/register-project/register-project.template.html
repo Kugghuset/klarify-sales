@@ -1,0 +1,15 @@
+<div class="container-fluid forecast">
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <input type="text" v-model="name" placeholder="name">
+            <input type="text" v-model="employee" placeholder="employee">
+            <input type="text" v-model="customer" placeholder="customer">
+            <input type="text" v-model="value" placeholder="value">
+            <input type="text" v-model="probability" placeholder="probability">
+            <su-datepicker title="Date from" :max-date="_dateTo" :date.sync="_dateFrom"></su-datepicker>
+            <su-datepicker title="Date to" :min-date="_dateFrom" :date.sync="_dateTo"></su-datepicker>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+</div>

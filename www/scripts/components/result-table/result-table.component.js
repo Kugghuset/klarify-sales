@@ -6,7 +6,8 @@ import factProject from '../../services/projects.service.js';
 import config from '../../config';
 import utils from '../../services/utils.js';
 import VueResource from 'vue-resource';
-import $ from "jquery";
+import moment from 'moment';
+
 
 Vue.use(VueResource);
 
@@ -58,3 +59,12 @@ const ResultTable = Vue.extend({
 Vue.component('result-table', ResultTable)
 
 export default ResultTable;
+
+/**
+ * Date filer, similar to that of Angular's
+ */
+Vue.filter('date', (value, format) => {
+  return moment(new Date(value)).isValid()
+    ? moment(value).format(!!format ? format
+    : 'YYYY-MM-DD HH:mm') : value;
+});
