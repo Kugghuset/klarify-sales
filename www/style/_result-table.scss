@@ -1,0 +1,35 @@
+.forecast {
+    width: 1300px;
+}
+
+input {
+    border: none;
+    background: transparent;
+    width: 60px;
+    font-size: 11px;
+}
+
+::-webkit-input-placeholder {
+    color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: black;  
+}
+
+:-ms-input-placeholder {  
+    color: black;  
+}
+
+.tooltip-inner {
+    background-color: green;
+    color: #fff;
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: green;
+}
