@@ -16,7 +16,11 @@ const {storage, http} = utils;
 
 const RegisterProject = Vue.extend({
   template,
-  props: {},
+  props: {
+    projects: {
+      type: Array,
+    },
+  },
   data: function() {
     return {
         name: '',
@@ -24,11 +28,31 @@ const RegisterProject = Vue.extend({
         customer: '',
         value: '',
         probability: '',
-        start: '',
-        end: ''
+        dateTo: moment().add(1, 'months').toDate(),
+        dateFrom: new Date(),
     }
   },
-  methods: {},
+  methods: {
+    post: function (event) {
+      let item = {
+        "Employee": this.employee,
+        "Project Name": this.name,
+        "Customer": this.customer,
+        "Value": this.value,
+        "Probability": this.probability,
+        "Start Date": this.dateFrom,
+        "End Date": this.dateTo
+      };
+      let url = config.baseUrl + '/api/projects/create/';
+      Vue.http.put(url, item).then((response) => {
+        this.connectionOk = true;
+        this.projects.push(item);
+        this.$data = initialState()
+      }, (response) => {
+        this.connectionOk = false;
+      });
+    }
+  },
   computed: {
     _dateFrom: {
       get: function () {
@@ -52,6 +76,19 @@ const RegisterProject = Vue.extend({
     },
   },
 });
+
+// outside of the component:
+function initialState (){
+  return {
+    name: '',
+    employee: '',
+    customer: '',
+    value: '',
+    probability: '',
+    dateTo: moment().add(1, 'months').toDate(),
+    dateFrom: new Date(),
+  }
+}
 
 Vue.component('register-project', RegisterProject)
 

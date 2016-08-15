@@ -76,7 +76,6 @@ const SuDatepickerComponent = Vue.extend({
     },
   },
   ready: function () {
-      console.log(document.getElementById(this.romeId))
 
     this.romeInstance = rome(document.getElementById(this.romeId), {
       weekStart: 1,

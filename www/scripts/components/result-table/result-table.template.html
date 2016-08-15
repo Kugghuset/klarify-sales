@@ -7,6 +7,8 @@
     </div>
     <div class="col-xs-1"></div>
   </div>
+  
+  <register-project :projects.sync="projects" ></register-project>
 
   <div class="row">
     <div class="col-xs-1"></div>
@@ -37,8 +39,8 @@
                   <th>{{project['Start Date'] | date 'YYYY-MM-DD'}}</th>
                   <th>{{project['End Date'] | date 'YYYY-MM-DD'}}</th>
                   <th>
-                      <button type="button" class="btn btn-primary active">Won</button>
-                      <button type="button" class="btn btn-primary disabled">Lost</button>
+                      <update-button title="Won" :probability='1' :id="project['ProjectId']" :item.sync="project"></update-button>
+                      <update-button title="Lost" :probability='0' :id="project['ProjectId']" :item.sync="project"></update-button>
                   </th>
               </tr>
           </tbody>
@@ -77,7 +79,7 @@
                   <th>{{project['Start Date'] | date 'YYYY-MM-DD'}}</th>
                   <th>{{project['End Date'] | date 'YYYY-MM-DD'}}</th>
                   <th>
-                      <button type="button" class="btn btn-primary active">Return to pipeline</button>
+                      <update-button title="Return to pipeline" :probability='0.5' :id="project['ProjectId']" :item.sync="project"></update-button>
                   </th>
               </tr>
           </tbody>
@@ -115,7 +117,9 @@
                   <th>{{100*project['Probability'] + "%"}}</th>
                   <th>{{project['Start Date'] | date 'YYYY-MM-DD'}}</th>
                   <th>{{project['End Date'] | date 'YYYY-MM-DD'}}</th>
-                  <th></th>
+                  <th>
+                      <update-button title="Return to pipeline" :probability='0.5' :id="project['ProjectId']" :item.sync="project"></update-button>
+                  </th>
               </tr>
           </tbody>
       </table>

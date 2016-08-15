@@ -7,6 +7,7 @@ import config from '../../config';
 import utils from '../../services/utils.js';
 import VueResource from 'vue-resource';
 import moment from 'moment';
+import _ from 'lodash';
 
 
 Vue.use(VueResource);
@@ -33,14 +34,14 @@ const ResultTable = Vue.extend({
     factProject.getCurrentProjects().then(function () {
       let projects = storage.get('allProjects');
       this.projects = projects;
-      console.log(projects);
     }.bind(this))
     .catch( err => {console.log(err)});
 
     let projects = storage.get('allProjects') || [];
 
     return {
-      projects: projects
+      projects: projects,
+      newProject: {},
     }
   },
   methods: {
@@ -53,7 +54,7 @@ const ResultTable = Vue.extend({
     pipe: function (item) {
       return item['Probability'] > 0 && item['Probability'] < 1;
     }   
-  }
+  },
 });
 
 Vue.component('result-table', ResultTable)

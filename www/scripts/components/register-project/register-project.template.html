@@ -1,15 +1,69 @@
-<div class="container-fluid forecast">
+<div class="container-fluid input-container">
     <div class="row">
+
         <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-            <input type="text" v-model="name" placeholder="name">
-            <input type="text" v-model="employee" placeholder="employee">
-            <input type="text" v-model="customer" placeholder="customer">
-            <input type="text" v-model="value" placeholder="value">
-            <input type="text" v-model="probability" placeholder="probability">
-            <su-datepicker title="Date from" :max-date="_dateTo" :date.sync="_dateFrom"></su-datepicker>
-            <su-datepicker title="Date to" :min-date="_dateFrom" :date.sync="_dateTo"></su-datepicker>
+
+        <div class="col-xs-2">
+            <div class="form-group">
+            <label for="project">Project name:</label>
+            <input class="form-control input" type="text" v-model="name" placeholder="Project" id="project">
+            </div>
         </div>
+
+        <div class="col-xs-1">
+            <div class="form-group">
+                <label for="person">Wizard:</label>
+            <input class="form-control input" type="text" v-model="employee" placeholder="Person" id="person">
+            </div>
+        </div>
+
+        <div class="col-xs-1">
+            <div class="form-group">
+            <label for="customer">Customer:</label>
+            <input class="form-control input" type="text" v-model="customer" placeholder="Customer" id="customer">
+            </div>
+        </div>
+
+        <div class="col-xs-1">
+            <div class="form-group">
+            <label for="value">Value:</label>
+            <input class="form-control input" type="text" v-model="value" placeholder="Value" id="value">
+            </div>
+        </div>
+
+        <div class="col-xs-1">
+            <div class="form-group">
+            <label for="probability">Probability:</label>
+            <select class="form-control input" v-model="probability" placeholder="Probability" id="probability">
+                <option value="0">0 %</option>
+                <option value="0.25">25 %</option>
+                <option value="0.5">50 %</option>
+                <option value="0.75">75 %</option>
+                <option value="1">100 %</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="col-xs-1">
+            <div class="form-group">
+            <label for="start">Start date:</label>
+            <su-datepicker class="form-control input" title="Date from" :max-date="_dateTo" :date.sync="_dateFrom" id="start"></su-datepicker>
+            </div>
+        </div>
+
+        <div class="col-xs-1">
+            <div class="form-group">
+            <label for="end">End date:</label>
+            <su-datepicker class="form-control input" title="Date to" :min-date="_dateFrom" :date.sync="_dateTo" id="end"></su-datepicker>
+            </div>
+        </div>
+
+        <div class="col-xs-1">
+            <div class="form-group">
+            <button id="postButton" type="button" class="btn btn-primary btn-lg add-button" v-on:click="post">Add Project</button>
+            </div>
+        </div>
+
         <div class="col-xs-1"></div>
     </div>
 </div>

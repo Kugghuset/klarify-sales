@@ -14,7 +14,7 @@ export const getAllProjects = (req, res) => {
 }
 
 /**
- * Route: GET '/api/factProject/all'
+ * Route: GET '/api/factProject/create'
  */
 export const createProject = (req, res) => {
     let _project = req.body;
@@ -23,7 +23,19 @@ export const createProject = (req, res) => {
     .catch((err) => utils.handleError(res, err));
 }
 
+/**
+ * Route: GET '/api/factProject/update:id'
+ */
+export const updateProject = (req, res) => {
+    let {id} = req.params;
+    let _project = req.body;
+    FactProject.update(id, _project)
+    .then((factProject) => res.status(200).json(factProject))
+    .catch((err) => utils.handleError(res, err));
+}
+
 export default {
     all: getAllProjects,
-    create: createProject
+    create: createProject,
+    update: updateProject,
 }

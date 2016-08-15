@@ -6,6 +6,7 @@ import MainRoute from './main-route/main-route.component';
 import ResultTable from './result-table/result-table.component';
 import RegisterProject from './register-project/register-project.component';
 import SuDatepicker from './su-datepicker/su-datepicker.component';
+import UpdateButton from './update-button/update-button.component';
 /// Stop inject imports ///
 
 export default {
@@ -15,5 +16,6 @@ export default {
   'resultTable': ResultTable,
   'registerProject': RegisterProject,
   'suDatepicker': SuDatepicker,
+  'updateButton': UpdateButton,
   /// Stop inject components ///
 }

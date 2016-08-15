@@ -1,5 +1,5 @@
 SELECT
-    [timeAppEmployeeId]
+    [ProjectId]
   , [Employee]
   , [Project Name]
   , [Customer]

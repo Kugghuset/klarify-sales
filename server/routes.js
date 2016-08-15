@@ -26,6 +26,7 @@ export default (app, log) => {
   app.use('/api/projects/', require('./api/factProject').default);
   app.use('/api/projects/create', require('./api/factProject').default);
   app.use('/api/projects/all', require('./api/factProject').default);
+  app.use('/api/projects/update', require('./api/factProject').default);
   /// Stop inject routes ///
 
   /// Start inject services ///

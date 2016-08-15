@@ -5,5 +5,6 @@ SELECT
   , [Value]
   , [Probability]
   , [Start Date]
-  , [End Date] 
+  , [End Date]
+  , [ProjectId]
 FROM [dbo].[FactProject]
