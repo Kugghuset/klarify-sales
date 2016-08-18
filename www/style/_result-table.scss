@@ -1,3 +1,8 @@
+.header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 .forecast {
     width: 1300px;
 }
@@ -5,8 +10,8 @@
 input {
     border: none;
     background: transparent;
-    width: 60px;
-    font-size: 11px;
+    width: 100%;
+    font-size: 12px;
 }
 
 ::-webkit-input-placeholder {

@@ -41,12 +41,14 @@ const RegisterProject = Vue.extend({
         "Value": this.value,
         "Probability": this.probability,
         "Start Date": this.dateFrom,
-        "End Date": this.dateTo
+        "End Date": this.dateTo,
+        "isDeleted": 0
       };
       let url = config.baseUrl + '/api/projects/create/';
       Vue.http.put(url, item).then((response) => {
         this.connectionOk = true;
         this.projects.push(item);
+        console.log(this.projects);
         this.$data = initialState()
       }, (response) => {
         this.connectionOk = false;

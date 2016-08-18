@@ -40,6 +40,9 @@ const UpdateButton = Vue.extend({
     },
     item: {
       type: Object,
+    },
+    isDeleted: {
+      type: Boolean,
     }
   },
   methods: {
@@ -48,12 +51,20 @@ const UpdateButton = Vue.extend({
       Vue.http.put(url, this._item).then((response) => {
         this.connectionOk = true;
         this.item.Probability = this.probability;
-        console.log('OK');
       }, (response) => {
         this.connectionOk = false;
-        console.log('FAILED');
       });
-    }
+    },
+    delete: function (event) {
+      this.item.isDeleted = 1;
+      let url = config.baseUrl + '/api/projects/update/' + this.id;
+      Vue.http.put(url, this.item).then((response) => {
+        this.connectionOk = true;
+      }, (response) => {
+        this.connectionOk = false;
+        this.item.isDeleted = 0;
+      });
+    },
   },
   computed: {
     _item: {

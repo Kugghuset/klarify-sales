@@ -1,0 +1,16 @@
+<input v-if="fieldtype == 'String'" v-on:blur="update" v-model="content">
+
+<input v-if="fieldtype == 'Number'" v-on:blur="update" v-model="content">
+
+<select v-if="fieldtype == 'Probability'" v-on:change="update" v-model="content">
+    <option disabled selected='selected' v-if="fieldtype == 'String'" value='0'>0 %</option>
+    <option value=0.0>0 %</option>
+    <option value=0.25>25 %</option>
+    <option value=0.5>50 %</option>
+    <option value=0.75>75 %</option>
+    <option value=1.0>100 %</option>
+</select>
+
+<su-datepicker v-if="fieldtype == 'Start Date'" :title="content | date 'YYYY-MM-DD" :dateFrom.sync="content" v-on:blur="update" id="start"></su-datepicker>
+
+<su-datepicker v-if="fieldtype == 'End Date'" :title="content | date 'YYYY-MM-DD" :dateTo.sync="content" v-on:blur="update" id="end"></su-datepicker>

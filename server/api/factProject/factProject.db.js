@@ -122,6 +122,10 @@ export function update(id, project) {
           type: sql.Date,
           val: project['End Date']
         },
+        isdeleted: {
+          type: sql.Bit,
+          val: project['isDeleted']
+        },
       }
     })
     .then((project) => resolve("Record created: " + JSON.stringify(project)))

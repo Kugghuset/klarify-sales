@@ -1,3 +1,3 @@
-ALTER TABLE FactProject
-  ADD [timeAppEmployeeId] BigInt IDENTITY(1, 1) PRIMARY KEY NOT NULL
-
+UPDATE FactProject
+SET isDeleted=0
+WHERE isDeleted is Null

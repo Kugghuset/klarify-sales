@@ -1,12 +1,4 @@
 <div class="container-fluid forecast">
-
-  <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-      <h1>Klarify Sales</h1>
-    </div>
-    <div class="col-xs-1"></div>
-  </div>
   
   <register-project :projects.sync="projects" ></register-project>
 
@@ -20,7 +12,7 @@
           <thead>
               <tr>
                   <th class="info"><span style="display:block; width:170px;">Project</span></th>
-                  <th class="info"><span style="display:block; width:100px;">Person</span></th>
+                  <th class="info"><span style="display:block; width:100px;">Wizard</span></th>
                   <th class="info"><span style="display:block; width:100px;">Customer</span></th>
                   <th class="info"><span style="display:block; width:100px;">Project Value</span></th>
                   <th class="info"><span style="display:block; width:100px;">Probability</span></th>
@@ -31,13 +23,13 @@
           </thead>
           <tbody>
               <tr v-for="project in projects | filterBy pipe">
-                  <th>{{project['Project Name']}}</th>
-                  <th>{{project['Employee']}}</th>
-                  <th>{{project['Customer']}}</th>
-                  <th>{{project['Value'] | currency '' 0}}</th>
-                  <th>{{100*project['Probability'] + "%"}}</th>
-                  <th>{{project['Start Date'] | date 'YYYY-MM-DD'}}</th>
-                  <th>{{project['End Date'] | date 'YYYY-MM-DD'}}</th>
+                  <th><project-field fieldtype="String" :content.sync="project['Project Name']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="String" :content.sync="project['Employee']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="String" :content.sync="project['Customer']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Number" :content.sync="project['Value']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Probability" :content.sync="project['Probability']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Start Date" :content.sync="project['Start Date']" :item.sync="project"></project-field></th>
+                  <th><project-field fieldtype="End Date" :content.sync="project['End Date']" :item.sync="project"></project-field></th>
                   <th>
                       <update-button title="Won" :probability='1' :id="project['ProjectId']" :item.sync="project"></update-button>
                       <update-button title="Lost" :probability='0' :id="project['ProjectId']" :item.sync="project"></update-button>
@@ -60,7 +52,7 @@
           <thead>
               <tr>
                   <th class="info"><span style="display:block; width:170px;">Project</span></th>
-                  <th class="info"><span style="display:block; width:100px;">Person</span></th>
+                  <th class="info"><span style="display:block; width:100px;">Wizard</span></th>
                   <th class="info"><span style="display:block; width:100px;">Customer</span></th>
                   <th class="info"><span style="display:block; width:100px;">Project Value</span></th>
                   <th class="info"><span style="display:block; width:100px;">Probability</span></th>
@@ -71,15 +63,15 @@
           </thead>
           <tbody>
               <tr v-for="project in projects | filterBy won">
-                  <th>{{project['Project Name']}}</th>
-                  <th>{{project['Employee']}}</th>
-                  <th>{{project['Customer']}}</th>
-                  <th>{{project['Value'] | currency '' 0}}</th>
-                  <th>{{100*project['Probability'] + "%"}}</th>
-                  <th>{{project['Start Date'] | date 'YYYY-MM-DD'}}</th>
-                  <th>{{project['End Date'] | date 'YYYY-MM-DD'}}</th>
+                  <th><project-field fieldtype="String" :content.sync="project['Project Name']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="String" :content.sync="project['Employee']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="String" :content.sync="project['Customer']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Number" :content.sync="project['Value']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Probability" :content.sync="project['Probability']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Start Date" :content.sync="project['Start Date']" :item.sync="project"></project-field></th>
+                  <th><project-field fieldtype="End Date" :content.sync="project['End Date']" :item.sync="project"></project-field></th>
                   <th>
-                      <update-button title="Return to pipeline" :probability='0.5' :id="project['ProjectId']" :item.sync="project"></update-button>
+                      <update-button title="Return" :probability='0.5' :id="project['ProjectId']" :item.sync="project"></update-button>
                   </th>
               </tr>
           </tbody>
@@ -99,7 +91,7 @@
           <thead>
               <tr>
                   <th class="info"><span style="display:block; width:170px;">Project</span></th>
-                  <th class="info"><span style="display:block; width:100px;">Person</span></th>
+                  <th class="info"><span style="display:block; width:100px;">Wizard</span></th>
                   <th class="info"><span style="display:block; width:100px;">Customer</span></th>
                   <th class="info"><span style="display:block; width:100px;">Project Value</span></th>
                   <th class="info"><span style="display:block; width:100px;">Probability</span></th>
@@ -110,15 +102,16 @@
           </thead>
           <tbody>
               <tr v-for="project in projects | filterBy lost">
-                  <th>{{project['Project Name']}}</th>
-                  <th>{{project['Employee']}}</th>
-                  <th>{{project['Customer']}}</th>
-                  <th>{{project['Value'] | currency '' 0}}</th>
-                  <th>{{100*project['Probability'] + "%"}}</th>
-                  <th>{{project['Start Date'] | date 'YYYY-MM-DD'}}</th>
-                  <th>{{project['End Date'] | date 'YYYY-MM-DD'}}</th>
+                  <th><project-field fieldtype="String" :content.sync="project['Project Name']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="String" :content.sync="project['Employee']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="String" :content.sync="project['Customer']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Number" :content.sync="project['Value']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Probability" :content.sync="project['Probability']" :item.sync="project" ></project-field></th>
+                  <th><project-field fieldtype="Start Date" :content.sync="project['Start Date']" :item.sync="project"></project-field></th>
+                  <th><project-field fieldtype="End Date" :content.sync="project['End Date']" :item.sync="project"></project-field></th>
                   <th>
-                      <update-button title="Return to pipeline" :probability='0.5' :id="project['ProjectId']" :item.sync="project"></update-button>
+                      <update-button title="Return" :probability='0.5' :id="project['ProjectId']" :item.sync="project"></update-button>
+                      <update-button title="Delete" :id="project['ProjectId']" :item.sync="project"></update-button>
                   </th>
               </tr>
           </tbody>

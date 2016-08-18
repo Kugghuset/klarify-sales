@@ -46,14 +46,39 @@ const ResultTable = Vue.extend({
   },
   methods: {
     lost: function (item) {
-      return item['Probability'] === 0;
+      return item['Probability'] == 0 && item['isDeleted'] == 0 ;
     },
     won: function (item) {
-      return item['Probability'] === 1;
+      return item['Probability'] == 1 && item['isDeleted'] == 0 ;
     }, 
     pipe: function (item) {
-      return item['Probability'] > 0 && item['Probability'] < 1;
-    }   
+      return item['Probability'] > 0 && item['Probability'] < 1 && item['isDeleted'] == 0 ;
+    },
+    getdate: function(value) {
+      return moment(new Date(value)).isValid();
+    }
+  },
+  computed: {
+    _dateFrom: {
+      get: function () {
+        return this.dateFrom;
+      },
+      set: function (dateFrom) {
+        if (!moment(dateFrom).isSame(this.dateFrom, 'day')) {
+          this.dateFrom = dateFrom;
+        }
+      },
+    },
+    _dateTo: {
+      get: function () {
+        return this.dateTo;
+      },
+      set: function (dateTo) {
+        if (!moment(dateTo).isSame(this.dateTo, 'day')) {
+          this.dateTo = dateTo;
+        }
+      },
+    },
   },
 });
 
@@ -67,5 +92,5 @@ export default ResultTable;
 Vue.filter('date', (value, format) => {
   return moment(new Date(value)).isValid()
     ? moment(value).format(!!format ? format
-    : 'YYYY-MM-DD HH:mm') : value;
+    : 'YYYY-MM-DD') : value;
 });
