@@ -11,6 +11,6 @@
     <option value=1.0>100 %</option>
 </select>
 
-<su-datepicker v-if="fieldtype == 'Start Date'" :title="content | date 'YYYY-MM-DD" :dateFrom.sync="content" v-on:blur="update" id="start"></su-datepicker>
+<su-datepicker v-if="fieldtype == 'Start Date'" :title="content | date 'YYYY-MM-DD" :date.sync="content" v-on:blur="update" id="start"></su-datepicker>
 
-<su-datepicker v-if="fieldtype == 'End Date'" :title="content | date 'YYYY-MM-DD" :dateTo.sync="content" v-on:blur="update" id="end"></su-datepicker>
+<su-datepicker v-if="fieldtype == 'End Date'" :title="content | date 'YYYY-MM-DD" :date.sync="content" v-on:blur="update" id="end"></su-datepicker>
